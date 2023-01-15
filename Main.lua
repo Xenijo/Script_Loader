@@ -1,3 +1,10 @@
+ rconsoleclear()
+rconsolename("XenjiosScripts| Press Enter button to continue")
+rconsoleinput()
+
+
+
+
 local name = "XenijoScripts"
 local files = {
     "https://raw.githubusercontent.com/Xenijo/XenWare-OpenScource/main/Anime%20Hero%20Script.lua",
@@ -20,7 +27,7 @@ for i = 1, #files do
         if isfile(filepath) then
             local file = loadstring(readfile(filepath))
             local version = file and file() and file().getgenv().version or nil
-            if version == "1.1" then
+            if version == "1.0" then
                 print(fileName .. " is already up-to-date.")
             else
                 local Response = syn.request({
@@ -37,15 +44,17 @@ for i = 1, #files do
                         })
                         if Response then
                             writefile(filepath, Response.Body)
-                            print(fileName .. " has been updated.")
+                            rconsoleprint(fileName .. "\n has been updated.")
                        else
-                            print("Error: Could not download ".. fileName)
+                        rconsoleinfo("error: You already have the files or Script cant find files")
+                        rconsoleprint("\nError: Could not download ".. fileName)
                         end
                     else
-                        print(fileName .. " is already up-to-date.")
+                        rconsoleprint(fileName .. "\n is already up-to-date.")
                     end
                 else
-                    print("Error: Could not download ".. fileName)
+                    rconsoleinfo("\n error: You already have the files or Script cant find files")
+                    rconsoleprint("\n Error: Could not download ".. fileName)
                 end
             end
         else
@@ -54,10 +63,13 @@ for i = 1, #files do
                 Method = "GET"
             })
             if Response then
+                wait(0.2)
+                rconsoleinfo("\n Downloading...")
                 writefile(filepath, Response.Body)
-                print(fileName .. " has been downloaded.")
+                rconsoleprint(fileName .. "\n has been downloaded.")
             else
-                print("Error: Could not download ".. fileName)
+                rconsoleinfo("\n error: You already have the files or Script cant find files")
+                rconsoleprint("\n Error: Could not download ".. fileName)
             end
         end            
     end
