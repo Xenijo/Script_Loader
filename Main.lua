@@ -1,4 +1,4 @@
-rconsoleclear() -- This function is used to clear the console.
+--rconsoleclear() -- This function is used to clear the console.
 rconsolename("XenjiosScripts| Press Enter button to continue") -- This function sets the name of the console window to the "XenjiosScripts| Press Enter button to continue"
 rconsoleinput() -- this function waits for user to press enter button
 
