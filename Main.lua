@@ -1,6 +1,9 @@
---rconsoleclear() -- This function is used to clear the console.
-rconsolename("XenjiosScripts| Press Enter button to continue") -- This function sets the name of the console window to the "XenjiosScripts| Press Enter button to continue"
-rconsoleinput() -- this function waits for user to press enter button
+ rconsoleclear()
+rconsolename("XenjiosScripts| Press Enter button to continue")
+rconsoleinput()
+
+
+
 
 local name = "XenijoScripts"
 local files = {
@@ -13,21 +16,21 @@ local files = {
 }
 
 if not isfolder(name) then 
-    makefolder(name) -- this function creates a folder with the name of the value stored in the 'name' variable
+    makefolder(name)
 end
 
 for i = 1, #files do
     local url = files[i]
-    local fileName = url:match("([^/]+)$") -- this function matches the last string after "/" in the url and stores it in fileName
+    local fileName = url:match("([^/]+)$")
     if fileName then
         local filepath = name.."/"..fileName
         if isfile(filepath) then
-            local file = loadstring(readfile(filepath)) -- this function loads the contents of the file at filepath as a string and assigns it to the 'file' variable
+            local file = loadstring(readfile(filepath))
             local version = file and file() and file().getgenv().version or nil
             if version == "1.0" then
                 print(fileName .. " is already up-to-date.")
             else
-                local Response = syn.request({ -- this function sends a request to the specified url 
+                local Response = syn.request({
                     Url = url,
                     Method = "HEAD"
                 })
@@ -40,9 +43,34 @@ for i = 1, #files do
                             Method = "GET"
                         })
                         if Response then
-                            writefile(filepath, Response.Body) -- this function writes the contents of the response body to the file at filepath
+                            writefile(filepath, Response.Body)
                             rconsoleprint(fileName .. "\n has been updated.")
                        else
                         rconsoleinfo("error: You already have the files or Script cant find files")
                         rconsoleprint("\nError: Could not download ".. fileName)
                         end
+                    else
+                        rconsoleprint(fileName .. "\n is already up-to-date.")
+                    end
+                else
+                    rconsoleinfo("\n error: You already have the files or Script cant find files")
+                    rconsoleprint("\n Error: Could not download ".. fileName)
+                end
+            end
+        else
+            local Response = syn.request({
+                Url = url,
+                Method = "GET"
+            })
+            if Response then
+                wait(0.2)
+                rconsoleinfo("\n Downloading...")
+                writefile(filepath, Response.Body)
+                rconsoleprint(fileName .. "\n has been downloaded.")
+            else
+                rconsoleinfo("\n error: You already have the files or Script cant find files")
+                rconsoleprint("\n Error: Could not download ".. fileName)
+            end
+        end            
+    end
+end
