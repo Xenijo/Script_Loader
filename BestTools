@@ -10,8 +10,7 @@ local files = {
     "https://raw.githubusercontent.com/Xenijo/Script_Loader/main/Simple%20Whitelist%20crack.lua",
     "https://raw.githubusercontent.com/Xenijo/Script_Loader/main/Infinity%20Yield.lua",
     "https://raw.githubusercontent.com/Xenijo/Script_Loader/main/Hydroxide%5BRemote%20spy%2C%20connstant%20spy%2C%20upvalue%20spy%5D.lua",
-    "https://raw.githubusercontent.com/Xenijo/Script_Loader/main/Http%20Spy.lua",
-    "https://raw.githubusercontent.com/Xenijo/XenWare-OpenScource/main/XenWareV2.lua"
+    "https://raw.githubusercontent.com/Xenijo/Script_Loader/main/Http%20Spy.lua"
 }
 
 if not isfolder(name) then 
