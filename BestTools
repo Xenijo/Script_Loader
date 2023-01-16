@@ -1,11 +1,11 @@
  rconsoleclear()
-rconsolename("XenjiosScripts| Press Enter button to continue")
+rconsolename("BestTools| Press Enter button to continue")
 rconsoleinput()
 
 
 
 
-local name = "XenijoScripts"
+local name = "BestTools"
 local files = {
     "https://raw.githubusercontent.com/Xenijo/Script_Loader/main/Simple%20Whitelist%20crack.lua",
     "https://raw.githubusercontent.com/Xenijo/Script_Loader/main/Infinity%20Yield.lua",
