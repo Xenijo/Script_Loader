@@ -55,8 +55,6 @@ if found then
                     DecryptedStartup = xorStrings(EncryptedStuff, decryptionKey)
                     self:FireServer("pong", DecryptedStartup)
                     return task.wait(9e9)
-                else
-                    warn("[EncryptedStuff not yet received!]")
                 end
             end
 
