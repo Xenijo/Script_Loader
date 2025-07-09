@@ -12,7 +12,7 @@ if found then
     for i, v in pairs(getupvalues(found)) do
         if typeof(v) == "function" and not iscclosure(v) then
             hookfunction(v, function(...) -- Cauze its an adonis skid off i just attach the "crash" or "kick" handling function completly fucking this anticheat, You wouldnt even need a handshake emulation if you js want to bypass anti dex anti hook
-                return task.wait(9e9)
+                return task.wait(9e9) -- or js also do the saame for the movement detection in ReplicatedFirst
             end)
         end
     end
